@@ -2,19 +2,25 @@ package ru.merkulyevsasha.industrytest.presentation.flats;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import ru.merkulyevsasha.industrytest.IndustryTest;
 import ru.merkulyevsasha.industrytest.KeyHolder;
 import ru.merkulyevsasha.industrytest.R;
+import ru.merkulyevsasha.industrytest.pojo.Building;
 import ru.merkulyevsasha.industrytest.pojo.Flat;
-import ru.merkulyevsasha.industrytest.presentation.buildingdetails.BuildingDetailsActivity;
 import ru.merkulyevsasha.industrytest.presentation.flatdetails.FlatDetailsActivity;
 
 /**
@@ -23,8 +29,16 @@ import ru.merkulyevsasha.industrytest.presentation.flatdetails.FlatDetailsActivi
 
 public class FlatsActivity extends AppCompatActivity implements FlatsAdapter.OnItemClickListener {
 
-    RecyclerView buildings;
-    FlatsAdapter adapter;
+    private RecyclerView flats;
+    private FlatsAdapter adapter;
+
+    private View root;
+    private ProgressBar progress;
+
+    @Inject
+    FlatsPresenterImpl pres;
+
+    private Building building;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +49,24 @@ public class FlatsActivity extends AppCompatActivity implements FlatsAdapter.OnI
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        List<Flat> flats = new ArrayList<>();
+        root = findViewById(R.id.root);
+        progress = (ProgressBar)findViewById(R.id.progress);
 
-        flats.add(new Flat(1, 1, 1, 50));
-        flats.add(new Flat(2, 1, 2, 55));
-        flats.add(new Flat(3, 2, 3, 100));
-        flats.add(new Flat(4, 3, 1, 80));
+        IndustryTest.getComponent().inject(this);
 
-        buildings = (RecyclerView)findViewById(R.id.recyclerview_flats);
+        Intent intent = getIntent();
+        building = (Building) intent.getSerializableExtra(KeyHolder.BUILDING);
+        if (building == null) {
+            finish();
+        }
+
+        setTitle(building.getName());
+
+        flats = (RecyclerView)findViewById(R.id.recyclerview_flats);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        buildings.setLayoutManager(layoutManager);
-        adapter = new FlatsAdapter(this, flats);
-        buildings.setAdapter(adapter);
+        flats.setLayoutManager(layoutManager);
+        adapter = new FlatsAdapter(this, new ArrayList<Flat>());
+        flats.setAdapter(adapter);
     }
 
     @Override
@@ -59,9 +79,60 @@ public class FlatsActivity extends AppCompatActivity implements FlatsAdapter.OnI
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        pres.onStart(this);
+        pres.onStart(building);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        pres.onStop();
+    }
+
+    @Override
     public void onFlatItemClick(Flat item) {
         Intent intent = new Intent(this, FlatDetailsActivity.class);
         intent.putExtra(KeyHolder.FLAT, item);
+        intent.putExtra(KeyHolder.BUILDING, building);
         startActivity(intent);
+    }
+
+    public void show(final List<Flat> items) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adapter.setItems(items);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    public void showProgress(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progress.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    public void hideProgress(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                progress.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    public void showErrorMessage(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Snackbar.make(root, "aaaa", Snackbar.LENGTH_LONG).show();
+            }
+        });
     }
 }

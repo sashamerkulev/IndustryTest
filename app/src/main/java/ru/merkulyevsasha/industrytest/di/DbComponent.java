@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import ru.merkulyevsasha.industrytest.JobServiceUpdater;
 import ru.merkulyevsasha.industrytest.presentation.buildings.BuildingsActivity;
+import ru.merkulyevsasha.industrytest.presentation.flats.FlatsActivity;
 
 
 @Singleton
@@ -14,6 +15,7 @@ import ru.merkulyevsasha.industrytest.presentation.buildings.BuildingsActivity;
 public interface DbComponent {
 
     void inject(BuildingsActivity context);
+    void inject(FlatsActivity context);
 
     void inject(JobServiceUpdater context);
 

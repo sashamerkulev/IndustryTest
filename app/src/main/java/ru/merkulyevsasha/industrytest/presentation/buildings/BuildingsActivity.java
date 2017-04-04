@@ -107,6 +107,7 @@ public class BuildingsActivity extends AppCompatActivity
     @Override
     public void onBuildingFlatClick(Building item) {
         Intent intent = new Intent(this, FlatsActivity.class);
+        intent.putExtra(KeyHolder.BUILDING, item);
         startActivity(intent);
     }
 

@@ -9,12 +9,65 @@
     app:cardCornerRadius="5dp"
     app:cardPreventCornerOverlap="false"
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         >
 
+        <LinearLayout
+            android:id="@+id/layout_floor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/layout_name"
+            android:layout_margin="8dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Этаж:"
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:id="@+id/textview_floor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:textSize="20dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_square"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/layout_floor"
+            android:layout_margin="8dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Площадь:"
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:id="@+id/textview_square"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:textSize="20dp"
+                />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

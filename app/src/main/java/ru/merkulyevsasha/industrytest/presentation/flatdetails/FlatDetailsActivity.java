@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import ru.merkulyevsasha.industrytest.KeyHolder;
 import ru.merkulyevsasha.industrytest.R;
@@ -28,9 +29,18 @@ public class FlatDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Flat flat = (Flat) intent.getSerializableExtra(KeyHolder.FLAT);
-        if (flat == null) {
+        Building building = (Building) intent.getSerializableExtra(KeyHolder.BUILDING);
+        if (flat == null || building == null) {
             finish();
         }
+
+        TextView name = (TextView)findViewById(R.id.textview_name);
+        TextView floors = (TextView)findViewById(R.id.textview_floor);
+        TextView square = (TextView)findViewById(R.id.textview_square);
+
+        name.setText(building.getName());
+        floors.setText(String.valueOf(flat.getFloor()));
+        square.setText(String.valueOf(flat.getSquare()));
 
     }
 

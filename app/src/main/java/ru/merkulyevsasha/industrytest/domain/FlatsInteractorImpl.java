@@ -13,8 +13,8 @@ import ru.merkulyevsasha.industrytest.repositories.FlatsRepository;
 
 public class FlatsInteractorImpl implements FlatsInteractor {
 
-    private FlatsRepository repo;
-    private ExecutorService executor;
+    private final FlatsRepository repo;
+    private final ExecutorService executor;
 
     public FlatsInteractorImpl(ExecutorService executor, FlatsRepository repo) {
         this.executor = executor;

@@ -19,7 +19,7 @@ import ru.merkulyevsasha.industrytest.pojo.Building;
 public class BuildingsAdapter extends RecyclerView.Adapter<BuildingsAdapter.ViewHolder> {
 
     private static final String TAG = BuildingsAdapter.class.getSimpleName();
-    private Context mContext;
+    private final Context mContext;
     private List<Building> mList;
 
     BuildingsAdapter(Context context, List<Building> list) {

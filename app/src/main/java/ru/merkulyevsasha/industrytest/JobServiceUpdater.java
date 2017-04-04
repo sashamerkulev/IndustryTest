@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javax.inject.Inject;
-
 import ru.merkulyevsasha.industrytest.pojo.Building;
 import ru.merkulyevsasha.industrytest.repositories.BuildingsRepository;
 import ru.merkulyevsasha.industrytest.repositories.BuildingsRepositoryImpl;

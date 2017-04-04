@@ -11,7 +11,7 @@ import ru.merkulyevsasha.industrytest.pojo.Flat;
  */
 public class FlatsPresenterImpl {
 
-    private FlatsInteractor inter;
+    private final FlatsInteractor inter;
     private FlatsActivity view;
 
     public FlatsPresenterImpl(FlatsInteractor inter) {

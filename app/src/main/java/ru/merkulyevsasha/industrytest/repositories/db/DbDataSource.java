@@ -12,9 +12,9 @@ import ru.merkulyevsasha.industrytest.pojo.Flat;
 
 public interface DbDataSource {
 
-    public List<Building> getBuildings();
-    public List<Flat> getFlats(int buildingId);
+    List<Building> getBuildings();
+    List<Flat> getFlats(int buildingId);
 
-    public void saveBuildings(List<Building> items);
+    void saveBuildings(List<Building> items);
 
 }

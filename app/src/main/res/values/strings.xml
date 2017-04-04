@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Industry</string>
     <string name="action_refresh">Refresh</string>
+    <string name="building_name">Название:</string>
+    <string name="builder_name">Застройщик:</string>
+    <string name="floors">Этажей:</string>
+    <string name="floor">Этаж:</string>
+    <string name="square">Площадь:</string>
 </resources>

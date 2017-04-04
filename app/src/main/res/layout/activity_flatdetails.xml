@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Название:"
+                android:text="@string/building_name"
                 android:textSize="20dp"
                 />
 
@@ -56,7 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Этаж:"
+                android:text="@string/floor"
                 android:textSize="20dp"
                 />
 
@@ -82,7 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Площадь:"
+                android:text="@string/square"
                 android:textSize="20dp"
                 />
 

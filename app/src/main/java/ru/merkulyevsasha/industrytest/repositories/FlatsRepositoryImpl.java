@@ -12,8 +12,8 @@ import ru.merkulyevsasha.industrytest.repositories.http.HttpDataSource;
 
 public class FlatsRepositoryImpl implements FlatsRepository {
 
-    private DbDataSource db;
-    private HttpDataSource http;
+    private final DbDataSource db;
+    private final HttpDataSource http;
 
     public FlatsRepositoryImpl(DbDataSource db, HttpDataSource http) {
         this.db = db;

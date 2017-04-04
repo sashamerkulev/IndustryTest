@@ -10,7 +10,7 @@ import ru.merkulyevsasha.industrytest.pojo.Building;
  */
 public class BuildingsPresenterImpl {
 
-    private BuildingsInteractor inter;
+    private final BuildingsInteractor inter;
     private BuildingsActivity view;
 
     public BuildingsPresenterImpl(BuildingsInteractor inter) {
@@ -22,7 +22,7 @@ public class BuildingsPresenterImpl {
         onStart();
     }
 
-    void onStart(){
+    private void onStart(){
 
         if (view == null)
             return;

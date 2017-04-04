@@ -13,8 +13,8 @@ import ru.merkulyevsasha.industrytest.repositories.BuildingsRepository;
 
 public class BuildingsInteractorImpl implements BuildingsInteractor {
 
-    private BuildingsRepository repo;
-    private ExecutorService executor;
+    private final BuildingsRepository repo;
+    private final ExecutorService executor;
 
     public BuildingsInteractorImpl(ExecutorService executor, BuildingsRepository repo) {
         this.executor = executor;

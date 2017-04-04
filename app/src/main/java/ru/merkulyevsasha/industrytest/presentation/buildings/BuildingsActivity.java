@@ -29,8 +29,8 @@ import ru.merkulyevsasha.industrytest.presentation.flats.FlatsActivity;
 public class BuildingsActivity extends AppCompatActivity
         implements BuildingsAdapter.OnItemClickListener, BuildingsAdapter.OnFlatItemClickListener {
 
-    RecyclerView buildings;
-    BuildingsAdapter adapter;
+    private RecyclerView buildings;
+    private BuildingsAdapter adapter;
 
     @Inject
     BuildingsPresenterImpl pres;

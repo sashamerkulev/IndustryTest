@@ -18,7 +18,7 @@ import ru.merkulyevsasha.industrytest.pojo.Flat;
 class FlatsAdapter extends RecyclerView.Adapter<FlatsAdapter.ViewHolder> {
 
     private static final String TAG = FlatsAdapter.class.getSimpleName();
-    private Context mContext;
+    private final Context mContext;
     private List<Flat> mList;
 
     FlatsAdapter(Context context, List<Flat> list) {

@@ -12,8 +12,8 @@ import ru.merkulyevsasha.industrytest.repositories.http.HttpDataSource;
 
 public class BuildingsRepositoryImpl implements BuildingsRepository {
 
-    private DbDataSource db;
-    private HttpDataSource http;
+    private final DbDataSource db;
+    private final HttpDataSource http;
 
     public BuildingsRepositoryImpl(DbDataSource db, HttpDataSource http) {
         this.db = db;

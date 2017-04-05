@@ -34,7 +34,7 @@ public class JobServiceUpdater extends JobService{
         Log.d(TAG, "onStartJob");
 
         final ExecutorService executor = Executors.newSingleThreadExecutor();
-        final BuildingsRepository repo = new BuildingsRepositoryImpl(new DbDataSourceImpl(getApplicationContext()), new HttpDataSourceImpl());
+        final BuildingsRepository repo = new BuildingsRepositoryImpl(new DbDataSourceImpl(getApplicationContext()), new HttpDataSourceImpl(this));
 
         executor.submit(new Runnable() {
             @Override

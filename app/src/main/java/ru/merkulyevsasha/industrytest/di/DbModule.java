@@ -24,8 +24,8 @@ public class DbModule {
 
     @Singleton
     @Provides
-    HttpDataSource providesHttpDataSource() {
-        return new HttpDataSourceImpl();
+    HttpDataSource providesHttpDataSource(Context context) {
+        return new HttpDataSourceImpl(context);
     }
 
 }

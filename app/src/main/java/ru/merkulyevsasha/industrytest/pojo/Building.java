@@ -14,7 +14,7 @@ public class Building implements Serializable {
     private int floors;
     private String builder;
 
-    private transient List<Flat> flats;
+    private List<Flat> flats;
 
     public Building(){
     }

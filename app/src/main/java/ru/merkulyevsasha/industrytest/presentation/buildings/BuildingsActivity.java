@@ -19,7 +19,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import ru.merkulyevsasha.industrytest.IndustryTest;
-import ru.merkulyevsasha.industrytest.JobServiceUpdater;
+import ru.merkulyevsasha.industrytest.service.JobServiceUpdater;
 import ru.merkulyevsasha.industrytest.KeyHolder;
 import ru.merkulyevsasha.industrytest.R;
 import ru.merkulyevsasha.industrytest.pojo.Building;

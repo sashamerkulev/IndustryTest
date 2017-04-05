@@ -1,4 +1,4 @@
-package ru.merkulyevsasha.industrytest;
+package ru.merkulyevsasha.industrytest.service;
 
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;

@@ -11,5 +11,6 @@ import ru.merkulyevsasha.industrytest.pojo.Flat;
 public interface FlatsRepository {
 
     List<Flat> getFlats(int buildingId);
+    void delete(int flatId);
 
 }

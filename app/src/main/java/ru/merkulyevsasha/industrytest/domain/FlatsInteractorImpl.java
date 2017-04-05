@@ -35,4 +35,18 @@ public class FlatsInteractorImpl implements FlatsInteractor {
             }
         });
     }
+
+    @Override
+    public void remove(final int flatId) {
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    repo.delete(flatId);
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

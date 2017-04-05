@@ -25,5 +25,10 @@ public class FlatsRepositoryImpl implements FlatsRepository {
         return db.getFlats(buildingId);
     }
 
+    @Override
+    public void delete(int flatId) {
+        db.deleteFlat(flatId);
+    }
+
 
 }

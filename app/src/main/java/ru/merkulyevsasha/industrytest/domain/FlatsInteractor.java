@@ -15,5 +15,5 @@ public interface FlatsInteractor {
     }
 
     void loadFlats(final int buildingId, final FlatsCallback callback);
-
+    void remove(int flatId);
 }

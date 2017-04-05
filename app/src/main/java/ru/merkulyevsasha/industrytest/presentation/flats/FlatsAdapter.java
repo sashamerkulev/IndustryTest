@@ -59,6 +59,21 @@ class FlatsAdapter extends RecyclerView.Adapter<FlatsAdapter.ViewHolder> {
         mList = items;
     }
 
+    public Flat getItem(int position) {
+        return mList.get(position);
+    }
+
+    public void remove(int position) {
+        Flat item = mList.get(position);
+//        if (itemsPendingRemoval.contains(item)) {
+//            itemsPendingRemoval.remove(item);
+//        }
+        if (mList.contains(item)) {
+            mList.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
     interface OnItemClickListener {
         void onFlatItemClick(Flat item);
     }

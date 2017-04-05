@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import ru.merkulyevsasha.industrytest.pojo.Flat;
  */
 
 public class DbDataSourceImpl extends SQLiteOpenHelper implements DbDataSource {
+
+    private static final String TAG = DbDataSourceImpl.class.getSimpleName();
 
     private static final String DATABASE_NAME = "industry";
     private static final int DATABASE_VERSION = 1;
@@ -147,5 +150,13 @@ public class DbDataSourceImpl extends SQLiteOpenHelper implements DbDataSource {
 
         }
 
+    }
+
+    @Override
+    public void deleteFlat(int flatId) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
+            int rows = db.delete(FLAT_TABLE_NAME, "id=?", new String[]{ String.valueOf(flatId) });
+            Log.d(TAG, "deleted rows"+rows);
+        }
     }
 }

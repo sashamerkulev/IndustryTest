@@ -16,5 +16,5 @@ public interface DbDataSource {
     List<Flat> getFlats(int buildingId);
 
     void saveBuildings(List<Building> items);
-
+    void deleteFlat(int flatId);
 }

@@ -52,4 +52,7 @@ public class FlatsPresenterImpl {
         this.view = null;
     }
 
+    void onRemove (int flatId){
+        inter.remove(flatId);
+    }
 }

@@ -35,7 +35,12 @@ public class BuildingsPresenterImpl {
                     return;
 
                 view.hideProgress();
-                view.show(items);
+
+                if (items.size() == 0){
+                    onRefresh();
+                } else {
+                    view.show(items);
+                }
             }
 
             @Override

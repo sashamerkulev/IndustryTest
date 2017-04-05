@@ -36,6 +36,7 @@ public class DbDataSourceImpl extends SQLiteOpenHelper implements DbDataSource {
     private static final String BUILDING_ID = "buildingId";
     private static final String FLOOR = "floor";
     private static final String SQUARE = "square";
+    private static final String DELETED = "deleted";
 
     public DbDataSourceImpl(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -58,7 +59,8 @@ public class DbDataSourceImpl extends SQLiteOpenHelper implements DbDataSource {
                 ID + " INTEGER PRIMARY KEY, " +
                 BUILDING_ID + "  INTEGER, " +
                 FLOOR + " INTEGER, " +
-                SQUARE + " INTEGER " +
+                SQUARE + " INTEGER, " +
+                DELETED + " INTEGER " +
                 ");"
                 + " create index "+FLAT_TABLE_NAME+"_id_index on " + FLAT_TABLE_NAME + "(" + ID + "); "
                 + " create index "+FLAT_TABLE_NAME+"_buildingid_index on " + FLAT_TABLE_NAME + "(" + BUILDING_ID + "); ";
@@ -97,7 +99,7 @@ public class DbDataSourceImpl extends SQLiteOpenHelper implements DbDataSource {
     public List<Flat> getFlats(int buildingId) {
         ArrayList<Flat> items = new ArrayList<>();
         try (SQLiteDatabase db = getReadableDatabase()) {
-            String select = "SELECT * FROM " + FLAT_TABLE_NAME + " WHERE "+BUILDING_ID+"=@buildingId";
+            String select = "SELECT * FROM " + FLAT_TABLE_NAME + " WHERE "+BUILDING_ID+"=@buildingId and "+DELETED+"=0";
             try(Cursor cursor = db.rawQuery(select, new String[]{String.valueOf(buildingId)})) {
                 if (cursor.moveToFirst()) {
                     do {
@@ -136,8 +138,10 @@ public class DbDataSourceImpl extends SQLiteOpenHelper implements DbDataSource {
                             flatValues.put(BUILDING_ID, flat.getBuildingId());
                             flatValues.put(FLOOR, flat.getFloor());
                             flatValues.put(SQUARE, flat.getSquare());
+                            flatValues.put(DELETED, 0);
                             int flatResult = (int) db.insertWithOnConflict(FLAT_TABLE_NAME, null, flatValues, SQLiteDatabase.CONFLICT_IGNORE);
                             if (flatResult == -1) {
+                                flatValues.remove(DELETED);
                                 db.update(FLAT_TABLE_NAME, flatValues, ID+"=?", new String[] {String.valueOf(flat.getId())});
                             }
                         }
@@ -155,7 +159,10 @@ public class DbDataSourceImpl extends SQLiteOpenHelper implements DbDataSource {
     @Override
     public void deleteFlat(int flatId) {
         try (SQLiteDatabase db = getWritableDatabase()) {
-            int rows = db.delete(FLAT_TABLE_NAME, "id=?", new String[]{ String.valueOf(flatId) });
+            //int rows = db.delete(FLAT_TABLE_NAME, "id=?", new String[]{ String.valueOf(flatId) });
+            ContentValues values = new ContentValues();
+            values.put(DELETED, 1);
+            int rows = db.update(FLAT_TABLE_NAME, values, "id=?", new String[]{ String.valueOf(flatId) });
             Log.d(TAG, "deleted rows"+rows);
         }
     }

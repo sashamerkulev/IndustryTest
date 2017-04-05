@@ -24,6 +24,8 @@ public class Flat implements Serializable {
     @Expose
     private int square;
 
+    private int deleted;
+
     public Flat(){
     }
 
@@ -64,5 +66,13 @@ public class Flat implements Serializable {
 
     public void setSquare(int square) {
         this.square = square;
+    }
+
+    public int getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(int deleted) {
+        this.deleted = deleted;
     }
 }

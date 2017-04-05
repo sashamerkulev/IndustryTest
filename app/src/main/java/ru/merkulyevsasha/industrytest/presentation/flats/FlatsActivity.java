@@ -104,8 +104,8 @@ public class FlatsActivity extends AppCompatActivity implements FlatsAdapter.OnI
 
             @Override
             public int getSwipeDirs(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-                int position = viewHolder.getAdapterPosition();
-                FlatsAdapter testAdapter = (FlatsAdapter)recyclerView.getAdapter();
+//                int position = viewHolder.getAdapterPosition();
+//                FlatsAdapter testAdapter = (FlatsAdapter)recyclerView.getAdapter();
 //                if (testAdapter.isUndoOn() && testAdapter.isPendingRemoval(position)) {
 //                    return 0;
 //                }
@@ -135,7 +135,7 @@ public class FlatsActivity extends AppCompatActivity implements FlatsAdapter.OnI
                     init();
                 }
 
-                // draw red background
+                // draw background
                 background.setBounds(itemView.getRight() + (int) dX, itemView.getTop(), itemView.getRight(), itemView.getBottom());
                 background.draw(c);
 

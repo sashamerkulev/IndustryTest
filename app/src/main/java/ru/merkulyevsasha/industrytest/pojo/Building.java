@@ -1,5 +1,8 @@
 package ru.merkulyevsasha.industrytest.pojo;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,11 +12,21 @@ import java.util.List;
 
 public class Building implements Serializable {
 
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("floors")
+    @Expose
     private int floors;
+    @SerializedName("builder")
+    @Expose
     private String builder;
 
+    @SerializedName("flats")
+    @Expose
     private List<Flat> flats;
 
     public Building(){

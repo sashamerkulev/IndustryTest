@@ -1,5 +1,8 @@
 package ru.merkulyevsasha.industrytest.pojo;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -8,9 +11,17 @@ import java.io.Serializable;
 
 public class Flat implements Serializable {
 
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("buildingId")
+    @Expose
     private int buildingId;
+    @SerializedName("floor")
+    @Expose
     private int floor;
+    @SerializedName("square")
+    @Expose
     private int square;
 
     public Flat(){

@@ -41,24 +41,27 @@ public class DbDataSourceImpl extends SQLiteOpenHelper implements DbDataSource {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String CREATE_REPOS_TABLE = "CREATE TABLE " + BUILDING_TABLE_NAME +
+        String CREATE_BUILDING_TABLE = "CREATE TABLE " + BUILDING_TABLE_NAME +
                 "( " +
                 ID + " INTEGER PRIMARY KEY, " +
                 BUILDING_NAME + "  TEXT, " +
                 BUILDER_NAME + " TEXT, " +
                 FLOORS + " INTEGER " +
-                ")";
+                ");"
+                +" create index "+BUILDING_TABLE_NAME+"_id_index on " + BUILDING_TABLE_NAME + "(" + ID + "); ";
 
-        String CREATE_COMMITS_TABLE = "CREATE TABLE " + FLAT_TABLE_NAME +
+        String CREATE_FLATS_TABLE = "CREATE TABLE " + FLAT_TABLE_NAME +
                 "( " +
                 ID + " INTEGER PRIMARY KEY, " +
                 BUILDING_ID + "  INTEGER, " +
                 FLOOR + " INTEGER, " +
                 SQUARE + " INTEGER " +
-                ")";
+                ");"
+                + " create index "+FLAT_TABLE_NAME+"_id_index on " + FLAT_TABLE_NAME + "(" + ID + "); "
+                + " create index "+FLAT_TABLE_NAME+"_buildingid_index on " + FLAT_TABLE_NAME + "(" + BUILDING_ID + "); ";
 
-        db.execSQL(CREATE_REPOS_TABLE);
-        db.execSQL(CREATE_COMMITS_TABLE);
+        db.execSQL(CREATE_BUILDING_TABLE);
+        db.execSQL(CREATE_FLATS_TABLE);
     }
 
     @Override

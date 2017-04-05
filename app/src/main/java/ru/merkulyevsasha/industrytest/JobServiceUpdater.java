@@ -26,11 +26,8 @@ public class JobServiceUpdater extends JobService{
 
     private static final String TAG = JobServiceUpdater.class.getSimpleName();
 
-    private static final int MINUTES = 5;
+    private static final int MINUTES = 60;
     private static final int JOB_ID = 999;
-
-    ExecutorService executor;
-    BuildingsRepository repo;
 
     @Override
     public boolean onStartJob(JobParameters params) {
@@ -67,8 +64,8 @@ public class JobServiceUpdater extends JobService{
         Log.d(TAG, "registering job");
         ComponentName serviceName = new ComponentName(context, JobServiceUpdater.class);
         JobInfo jobInfo = new JobInfo.Builder(JOB_ID, serviceName)
-                //.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
-                //.setRequiresDeviceIdle(true)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                .setRequiresDeviceIdle(true)
                 .setPeriodic(MINUTES*60*1000)
                 //.setRequiresCharging(true)
                 .build();

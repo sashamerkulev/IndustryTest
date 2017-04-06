@@ -223,7 +223,7 @@ public class FlatsActivity extends AppCompatActivity implements FlatsAdapter.OnI
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Snackbar.make(root, "aaaa", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(root, R.string.flats_error_message, Snackbar.LENGTH_LONG).show();
             }
         });
     }
